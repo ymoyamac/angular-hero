@@ -1,0 +1,35 @@
+<div fxLayout="column">
+  <div>
+    <h1>Search Hero</h1>
+  </div>
+  <div fxLayout="column">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Number</mat-label>
+      <input type="text"
+             placeholder="Search..."
+             aria-label="Search..."
+             matInput
+             [(ngModel)]="searchTerm"
+             [matAutocomplete]="auto"
+             (input)="searchingHero()">
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        (optionSelected)="optionSelected($event)">
+        <mat-option *ngFor="let hero of heroes"
+          [value]="hero"
+          >
+          {{hero.superhero}}
+        </mat-option>
+        <mat-option value=""
+          *ngIf="heroes.length === 0 && searchTerm.trim().length === 0">
+          Nothing found with: '{{ searchTerm }}'
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div>
+      <pre>{{ heroSelected | json }}</pre>
+    </div>
+  </div>
+</div>
+

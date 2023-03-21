@@ -1,0 +1,13 @@
+<h3 mat-dialog-title>Are you sure to delete {{ 'hero' }}?</h3>
+<div mat-dialog-content>Confirm</div>
+<div mat-dialog-actions>
+  <button mat-button
+    color="warn"
+    (click)="deleteHero()">
+    Yes, delete
+  </button>
+  <button mat-button
+    (click)="cancelAction()">
+    Cancel
+  </button>
+</div>

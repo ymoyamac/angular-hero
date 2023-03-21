@@ -1,0 +1,30 @@
+<mat-grid-list cols="1" *ngIf="!hero; else heroBlock">
+  <mat-grid-tile>
+    <mat-spinner></mat-spinner>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #heroBlock>
+  <div fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="30px"
+  >
+    <div fxFlex="50">
+      <h2>{{ hero.superhero }} <small>{{ hero.alter_ego }}</small></h2>
+      <img [src]="hero | imagehero" [alt]="hero.superhero">
+    </div>
+    <div fxFlex="50">
+      <h2>{{ hero.publisher }}</h2>
+      <mat-list>
+        <mat-list-item>{{ hero.first_appearance }}</mat-list-item>
+        <mat-list-item>{{ hero.characters }}</mat-list-item>
+        <mat-list-item>{{ hero.publisher }}</mat-list-item>
+        <mat-list-item>{{ hero.alter_ego }}</mat-list-item>
+      </mat-list>
+      <button mat-button color="warn"
+        (click)="toHome()">
+        Back
+      </button>
+    </div>
+  </div>
+</ng-template>
